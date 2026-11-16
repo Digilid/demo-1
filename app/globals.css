@@ -1,0 +1,167 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-night: #120907;
+  --color-maroon: #6b141a;
+  --color-maroon-deep: #3d0a0e;
+  --color-kasavu: #faf3e0;
+  --color-brass: #d4af37;
+  --color-brass-soft: #e9cf7a;
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-label: 'Cinzel', 'Cormorant Garamond', serif;
+  --font-ml: 'Noto Serif Malayalam', 'Noto Serif Devanagari', serif;
+}
+
+html,
+body {
+  background: var(--color-night);
+  color: var(--color-kasavu);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+html.scroll-locked,
+html.scroll-locked body {
+  overflow: hidden;
+  height: 100%;
+}
+
+::selection {
+  background: rgba(212, 175, 55, 0.35);
+}
+
+/* glassmorphic card with a Kasavu (gold-bordered handloom) edge */
+.kasavu-card {
+  position: relative;
+  background: linear-gradient(160deg, rgba(61, 10, 14, 0.72), rgba(18, 9, 7, 0.78));
+  backdrop-filter: blur(14px) saturate(1.25);
+  -webkit-backdrop-filter: blur(14px) saturate(1.25);
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  box-shadow:
+    0 0 0 4px rgba(18, 9, 7, 0.55),
+    0 0 0 5px rgba(212, 175, 55, 0.35),
+    0 30px 80px -20px rgba(0, 0, 0, 0.8),
+    inset 0 0 60px rgba(212, 175, 55, 0.06);
+}
+.kasavu-card::before,
+.kasavu-card::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  height: 7px;
+  background:
+    linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.9) 12%, rgba(246, 227, 161, 1) 50%, rgba(212, 175, 55, 0.9) 88%, transparent),
+    repeating-linear-gradient(90deg, rgba(107, 20, 26, 0.9) 0 6px, transparent 6px 12px);
+  background-blend-mode: multiply;
+  opacity: 0.85;
+}
+.kasavu-card::before {
+  top: 10px;
+}
+.kasavu-card::after {
+  bottom: 10px;
+}
+
+.gold-text {
+  background: linear-gradient(180deg, #fff3c4 0%, #e9cf7a 35%, #d4af37 60%, #a7801c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold-btn {
+  background: linear-gradient(180deg, #f6e3a1, #d4af37 55%, #a7801c);
+  color: #2a0a0c;
+  box-shadow: 0 0 0 1px rgba(255, 240, 190, 0.6) inset, 0 8px 24px -8px rgba(212, 175, 55, 0.7);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+.gold-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow: 0 0 0 1px rgba(255, 240, 190, 0.8) inset, 0 12px 30px -8px rgba(212, 175, 55, 0.9);
+}
+.ghost-btn {
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  color: #f6e3a1;
+  transition: background 0.25s ease;
+}
+.ghost-btn:hover {
+  background: rgba(212, 175, 55, 0.12);
+}
+
+.field {
+  width: 100%;
+  background: rgba(18, 9, 7, 0.55);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  color: var(--color-kasavu);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.field:focus {
+  border-color: rgba(233, 207, 122, 0.9);
+}
+
+/* the seal on the temple doors */
+@keyframes seal-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.55), 0 0 60px 10px rgba(255, 170, 60, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 18px rgba(212, 175, 55, 0), 0 0 90px 24px rgba(255, 170, 60, 0.55);
+  }
+}
+.seal {
+  animation: seal-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes lamp-spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+.lamp-spin {
+  animation: lamp-spin 3.2s linear infinite;
+  transform-style: preserve-3d;
+}
+@keyframes flame-flicker {
+  0%,
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+  30% {
+    transform: scaleY(1.08) scaleX(0.94);
+  }
+  60% {
+    transform: scaleY(0.94) scaleX(1.04);
+  }
+}
+.flame {
+  transform-origin: 50% 100%;
+  animation: flame-flicker 0.9s ease-in-out infinite;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.4);
+  border-radius: 9px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seal,
+  .lamp-spin,
+  .flame {
+    animation: none;
+  }
+}
