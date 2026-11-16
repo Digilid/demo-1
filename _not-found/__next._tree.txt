@@ -1,0 +1,5 @@
+:HL["/demo-1/_next/static/chunks/0ozp46bpkhcuf.css","style"]
+:HL["https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+Devanagari:wght@500&family=Noto+Serif+Malayalam:wght@400;500;600&display=swap","style"]
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
+0:{"b":"SnLJxQDjJOVSnWBLbI1Cr","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
